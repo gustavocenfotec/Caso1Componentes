@@ -1,0 +1,19 @@
+{
+    "nombreComercial": "Panadol",
+    "principioActivo": "Acetaminofen",
+    "presentacion": "pastilla",
+    "unidades": 100,
+    "medida": "gr",
+    "descripcion": "resolucion resfriado"
+}
+
+
+http://localhost:8080/medicamentos?pagesize=4&startAt=0
+
+http://localhost:8080/medicamentos?pagesize=10&startAt=0&nombrecomercial=Panadol
+
+http://localhost:8080/medicamentos?pagesize=10&startAt=0&principioactivo=Bicarbonato
+
+
+
+
