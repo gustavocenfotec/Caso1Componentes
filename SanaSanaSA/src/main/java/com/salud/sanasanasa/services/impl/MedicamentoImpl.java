@@ -46,60 +46,47 @@ public class MedicamentoImpl implements MedicamentoService {
 
     @Override
     public List<Medicamento> getMedicamentos(Integer pagesize, Integer startAt,String nombrecomercial, String principioactivo) {
-        List<Medicamento> todos;
 
-        todos=medicamentoRepo.findAll(pagesize, startAt);
-// CASOS DIFERENTES DE BUSQUEDA DE MEDICAMENTOS Y SU RESPECTIVO NIVEL
+        //VARIABLE DE BUSQUEDA POR NECESIDAD
+        //        List<Medicamento> todos;
+        //        todos=medicamentoRepo.findAll(pagesize, startAt);
+        // CASOS DIFERENTES DE BUSQUEDA DE MEDICAMENTOS Y SU RESPECTIVO NIVEL
 
         //NO HAY PARAMETROS DE BUSQUEDA ESPECIFICA SE ENVIA TODO
         if (nombrecomercial.equals("nada") && principioactivo.equals("nada")) {
-            logger.info("ESTOY EN NINGUN REQUEST");
-            return todos;
+//            logger.info("ESTOY EN NINGUN REQUEST");
+
+//            return todos;
+            return medicamentoRepo.findAll(pagesize, startAt);
         }
 
         // SE BUSCA QUE EL PARAMETRO NOMBRE COMERCIAL SEA REQUERIDO SERA EL PRIMERO EN BUSCAR
         if (!nombrecomercial.equals("nada")) {
 
-            List<Medicamento> busquedaespefica=busquedaNombreComercial(todos,nombrecomercial);
-            return busquedaespefica;
-//            return medicamentoRepo.findNombreComercial(pagesize, startAt,nombrecomercial);
+//METODO DE EJEMPLO SEMI FUNCIONAL PERO NO OPTIMA SE QUEDA DE EJEMPLO
+            //IMPLEMENTACION CAMBIDAD
+//            List<Medicamento> busquedaespefica=busquedaNombreComercial(todos,nombrecomercial);
+//            return busquedaespefica;
+
+
+            //RETORNO FUNCIONAL CORRECTO DE BUSQUEDA PROXIMIDAD
+            return medicamentoRepo.findNombreComercial(pagesize, startAt,nombrecomercial);
         }
+
+
+        //METODO DE EJEMPLO SEMI FUNCIONAL PERO NO OPTIMA SE QUEDA DE EJEMPLO
 
         // SE BUSCA QUE EL PARAMETRO PRINCIPIO ACTIVO SEA REQUERIDO SERA EL SEGUNDO EN BUSCAR
         // PERO SI SE BUSCO EL NOMBRE COMERCIAL NUNCA LLEGARA A ESTE
-        List<Medicamento> busquedaespefica=busquedaPrincipioActivo(todos,principioactivo);
-        return busquedaespefica;
-//        return medicamentoRepo.findPrincipioActivo(pagesize, startAt,principioactivo);
+//        List<Medicamento> busquedaespefica=busquedaPrincipioActivo(todos,principioactivo);
+//        return busquedaespefica;
+
+        //RETORNO FUNCIONAL CORRECTO DE BUSQUEDA PROXIMIDAD
+        return medicamentoRepo.findPrincipioActivo(pagesize, startAt,principioactivo);
     }
 
 
-    @Override
-    public List<Medicamento> busquedaNombreComercial(List<Medicamento> Medicamentos, String nombrecomercial) {
-        logger.info("NOMBRE COMERCIAL TIENE UN QUERY");
-        logger.info("Nombre Comercial: "+nombrecomercial+" Nombre Comercial:");
 
-        List<Medicamento> busquedaespefica=new ArrayList<>();
-
-        for(Medicamento medicamento :Medicamentos) {
-            if(medicamento.getNombreComercial().contains(nombrecomercial)){
-                busquedaespefica.add(medicamento);
-            }
-        }
-        return busquedaespefica;
-    }
-
-    @Override
-    public List<Medicamento> busquedaPrincipioActivo(List<Medicamento> Medicamentos, String principioactivo) {
-        List<Medicamento> busquedaespefica=new ArrayList<>();
-        logger.info("PRINCIPIO ACTIVO TIENE UN QUERY");
-        logger.info("principioactivo: "+principioactivo+" principioactivo:");
-        for(Medicamento medicamento :Medicamentos) {
-            if(medicamento.getNombreComercial().contains(principioactivo)){
-                busquedaespefica.add(medicamento);
-            }
-        }
-        return busquedaespefica;
-    }
 
     @Override
     public Boolean deleteMedicamento(Long id) {
@@ -127,4 +114,35 @@ public class MedicamentoImpl implements MedicamentoService {
         }
 
     }
+
+
+    //ESTOS METODOS  SON FUNCIONALES, PERO NO DE FORMA OPTIMA PERO QUEDAN COMO EJEMPLO
+
+//    @Override
+//    public List<Medicamento> busquedaNombreComercial(List<Medicamento> Medicamentos, String nombrecomercial) {
+//        logger.info("NOMBRE COMERCIAL TIENE UN QUERY");
+//        logger.info("Nombre Comercial: "+nombrecomercial+" Nombre Comercial:");
+//
+//        List<Medicamento> busquedaespefica=new ArrayList<>();
+//
+//        for(Medicamento medicamento :Medicamentos) {
+//            if(medicamento.getNombreComercial().contains(nombrecomercial)){
+//                busquedaespefica.add(medicamento);
+//            }
+//        }
+//        return busquedaespefica;
+//    }
+//
+//    @Override
+//    public List<Medicamento> busquedaPrincipioActivo(List<Medicamento> Medicamentos, String principioactivo) {
+//        List<Medicamento> busquedaespefica=new ArrayList<>();
+//        logger.info("PRINCIPIO ACTIVO TIENE UN QUERY");
+//        logger.info("principioactivo: "+principioactivo+" principioactivo:");
+//        for(Medicamento medicamento :Medicamentos) {
+//            if(medicamento.getNombreComercial().contains(principioactivo)){
+//                busquedaespefica.add(medicamento);
+//            }
+//        }
+//        return busquedaespefica;
+//    }
 }

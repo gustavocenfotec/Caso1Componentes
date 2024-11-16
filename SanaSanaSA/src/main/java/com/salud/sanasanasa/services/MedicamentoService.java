@@ -26,9 +26,11 @@ public interface MedicamentoService {
     public Long getMedicamentoCount();
 
 
-    //METODO PARA BUSQUEDA DE PROXIMIDAD DE NOMBRE COMERCIAL
-    public List<Medicamento> busquedaNombreComercial(List<Medicamento> Medicamentos,String nombrecomercial);
+    //ESTOS METODOS  SON FUNCIONALES, PERO NO DE FORMA OPTIMA PERO QUEDAN COMO EJEMPLO
 
-    //METODO PARA BUSQUEDA DE PROXIMIDAD DE PRINCIPIO ACTIVO
-    public List<Medicamento> busquedaPrincipioActivo(List<Medicamento> Medicamentos,String principioactivo);
+//    //METODO PARA BUSQUEDA DE PROXIMIDAD DE NOMBRE COMERCIAL PERO REALIZADO DESDE EL PROGRAMA
+//    public List<Medicamento> busquedaNombreComercial(List<Medicamento> Medicamentos,String nombrecomercial);
+//
+//    //METODO PARA BUSQUEDA DE PROXIMIDAD DE NOMBRE COMERCIAL PERO REALIZADO DESDE EL PROGRAMA
+//    public List<Medicamento> busquedaPrincipioActivo(List<Medicamento> Medicamentos,String principioactivo);
 }

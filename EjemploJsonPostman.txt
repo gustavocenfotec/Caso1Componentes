@@ -1,3 +1,5 @@
+EJEMPLO DE DATO JSON DE ENTIDAD MEDICAMENTO
+
 {
     "nombreComercial": "Panadol",
     "principioActivo": "Acetaminofen",
@@ -8,10 +10,24 @@
 }
 
 
+METODO POST Y GET
+http://localhost:8080/medicamentos
+
+METODO PUT Y DELETE
+http://localhost:8080/medicamentos/id
+
+
+METODO GET CON BUSQUEDAS ESPECICIFAS
+
+PAGINADO
 http://localhost:8080/medicamentos?pagesize=4&startAt=0
 
+
+BUSQUEDA POR NOMBRE COMERCIAL
 http://localhost:8080/medicamentos?pagesize=10&startAt=0&nombrecomercial=Panadol
 
+
+BUSQUEDA POR NOMBRE PRINCIPIO ACTIVO
 http://localhost:8080/medicamentos?pagesize=10&startAt=0&principioactivo=Bicarbonato
 
 
